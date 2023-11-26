@@ -1,8 +1,3 @@
-import TopicList from "@/components/TopicList";
-
-
 export default function Home() {
-  return (
-   <TopicList />
-  )
+  return <h1>Home page</h1>;
 }
