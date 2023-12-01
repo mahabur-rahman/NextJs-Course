@@ -1,7 +1,9 @@
-import React from 'react'
+import ReserveForm from "./components/ReserveForm";
 
 export default function ReserveItems() {
   return (
-    <div> ReserveItems page</div>
-  )
+    <div>
+      <ReserveForm />
+    </div>
+  );
 }

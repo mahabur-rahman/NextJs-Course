@@ -1,34 +1,15 @@
-"use client"
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Search from "@/app/components/Search";
 import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-  const [location, setLocation] = useState("");
-
-  console.log("search : ", location);
-
   return (
     <>
       <div className="p-12">
         <h1 className="text-center fw-bold text-3xl">Home page</h1>
         <h3>Search Here : </h3>
-        <form>
-          <input
-            type="text"
-            placeholder="search..."
-            style={{ width: "200px", border: "1px solid red" }}
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <button type="button" onClick={() => router.push("/search")}>
-            Search
-          </button>
-        </form>
+        <Search />
       </div>
-
       {/* details page */}
       <Link href="/restaurant/pizza">
         <div className="max-w-md mx-auto bg-white shadow-md rounded-md overflow-hidden">
