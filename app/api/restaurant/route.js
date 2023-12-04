@@ -32,8 +32,22 @@ export async function POST(request) {
   return NextResponse.json({ message: "Restaurant Created" }, { status: 201 });
 }
 
+// export async function GET() {
+//   await connectedDB();
+//   const restaurants = await Restaurant.find();
+//   return NextResponse.json({ restaurants });
+// }
+
 export async function GET() {
-  await connectedDB();
-  const restaurants = await Restaurant.find();
-  return NextResponse.json({ restaurants });
+  try {
+    await connectedDB();
+    const restaurants = await Restaurant.find().populate("locationId");
+    return NextResponse.json({ restaurants });
+  } catch (error) {
+    console.error("Error fetching restaurants:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch restaurants" },
+      { status: 500 }
+    );
+  }
 }
