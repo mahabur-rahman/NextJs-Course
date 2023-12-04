@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className="flex justify-around items-center">
+    <div className="flex">
       <Image
         src={restaurant.mainImage}
         title={"restaurant"}
