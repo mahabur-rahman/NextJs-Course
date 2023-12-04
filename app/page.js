@@ -1,8 +1,27 @@
-
 import Search from "@/app/components/Search";
-import Link from "next/link";
+import RestaurantCard from "./components/RestaurantCard";
+import axios from "axios";
 
-export default function Home() {
+const getRestaurants = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/api/restaurant", {
+      cache: "no-store",
+    });
+
+    if (res.status !== 200) {
+      throw new Error("Failed to fetch restaurants");
+    }
+
+    return res.data; // Use res.data to get the response data directly
+  } catch (error) {
+    console.log("Error loading restaurants: ", error);
+    return []; // Return an empty array or handle error as needed
+  }
+};
+
+export default async function Home() {
+  const { restaurants } = await getRestaurants();
+
   return (
     <>
       <div className="p-12">
@@ -11,22 +30,9 @@ export default function Home() {
         <Search />
       </div>
       {/* details page */}
-      <Link href="/restaurant/pizza">
-        <div className="max-w-md mx-auto bg-white shadow-md rounded-md overflow-hidden">
-          <div className="p-4">
-            <h2 className="text-xl font-bold mb-2">Card Title</h2>
-            <p className="text-gray-600">
-              This is a simple card example created using Tailwind CSS in
-              Next.js.
-            </p>
-          </div>
-          <div className="bg-gray-100 px-4 py-2">
-            <a href="#" className="text-blue-500 font-semibold">
-              Read More
-            </a>
-          </div>
-        </div>
-      </Link>
+      {restaurants?.map((restaurant) => (
+        <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+      ))}
     </>
   );
 }
