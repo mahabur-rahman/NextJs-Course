@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const LocationSchema = new mongoose.Schema(
+const LocationSchema = new Schema(
   {
     name: String,
     restaurants: [{ type: mongoose.Schema.Types.ObjectId, ref: "Restaurant" }],
