@@ -1,4 +1,4 @@
-import RestaurantSlugPage from "@/app/components/RestaurantSlugPage";
+import RestaurantSlug from "@/app/components/RestaurantSlug";
 import Link from "next/link";
 import axios from "axios";
 
@@ -26,8 +26,6 @@ export default async function RestaurantItems({ params }) {
   const { slug } = params;
   const restaurant = await getRestaurantBySlug(slug);
 
-  console.log(restaurant);
-
   return (
     <div>
       <Link href="/restaurant/pizza" className="bg-slate-200 mx-2">
@@ -37,7 +35,7 @@ export default async function RestaurantItems({ params }) {
         Menu
       </Link>
       <div>
-        <RestaurantSlugPage />
+        <RestaurantSlug restaurant={restaurant} />
       </div>
     </div>
   );
