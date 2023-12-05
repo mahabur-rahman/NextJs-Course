@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-export default function RestaurantMenu() {
+export default function RestaurantMenu({ params }) {
+  const { slug } = params;
+
   return (
     <div>
       <h1>Menu Page</h1>

@@ -28,10 +28,10 @@ export default async function RestaurantItems({ params }) {
 
   return (
     <div>
-      <Link href="/restaurant/pizza" className="bg-slate-200 mx-2">
+      <Link href={`/restaurant/${slug}`} className="bg-slate-200 mx-2">
         Overview
       </Link>
-      <Link href="/restaurant/pizza/menu" className="bg-slate-200 mx-2">
+      <Link href={`/restaurant/${slug}/menu`} className="bg-slate-200 mx-2">
         Menu
       </Link>
       <div>
