@@ -14,6 +14,7 @@ const RestaurantCard = ({ restaurant }) => {
         width="300"
         height="300"
       />
+
       <p>Name: {restaurant.name}</p>
       <p>Open: {restaurant.openTime}</p>
       <p>Close : {restaurant.closeTime}</p>
