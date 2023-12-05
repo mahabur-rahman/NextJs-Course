@@ -12,10 +12,10 @@ const getRestaurants = async () => {
       throw new Error("Failed to fetch restaurants");
     }
 
-    return res.data; // Use res.data to get the response data directly
+    return res.data;
   } catch (error) {
     console.log("Error loading restaurants: ", error);
-    return []; // Return an empty array or handle error as needed
+    return [];
   }
 };
 
