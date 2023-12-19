@@ -69,8 +69,6 @@ export async function GET(req, res) {
     const city =
       parsedUrl.query && parsedUrl.query.city ? parsedUrl.query.city : null;
 
-    console.log("City:", city); // Logging city for debugging
-
     let restaurants;
     if (city) {
       const location = await Location.findOne({ name: city });

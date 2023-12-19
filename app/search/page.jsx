@@ -1,11 +1,14 @@
-import RestaurantCard from "./components/RestaurantCard";
 import axios from "axios";
-import SearchBar from "./components/SearchBar";
+import RestaurantCard from "../components/RestaurantCard";
+
 const getRestaurants = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/api/restaurant", {
-      cache: "no-store",
-    });
+    const res = await axios.get(
+      "http://localhost:3000/api/restaurant?city=Gulshan",
+      {
+        cache: "no-store",
+      }
+    );
 
     if (res.status !== 200) {
       throw new Error("Failed to fetch restaurants");
@@ -18,18 +21,11 @@ const getRestaurants = async () => {
   }
 };
 
-export default async function Home() {
+export default async function Search() {
   const { restaurants } = await getRestaurants();
 
   return (
     <>
-      <div className="p-12">
-        <h1 className="text-center fw-bold text-3xl">Home page</h1>
-        <h3>Search Restaurant : </h3>
-
-        <SearchBar />
-      </div>
-      {/* details page */}
       {restaurants?.map((restaurant) => (
         <RestaurantCard key={restaurant._id} restaurant={restaurant} />
       ))}
